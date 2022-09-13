@@ -25,10 +25,10 @@ const State = (props) => {
     const [news, setNews] = useState([])
     
     const fetchNews = async () => {
-        const res = await fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=2bf87a9e81ac4266846fee136e618261')
+        const res = await fetch('https://note-news-app-server.herokuapp.com/articles')
         const newsData = await res.json()
 
-        return newsData.articles;
+        return newsData;
     }
 
     useEffect(() =>{

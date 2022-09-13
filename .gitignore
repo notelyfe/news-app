@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /.pnp
+/news-app-server
 .pnp.js
 
 # testing
