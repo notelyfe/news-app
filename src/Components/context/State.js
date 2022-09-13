@@ -7,7 +7,7 @@ const State = (props) => {
 
     //fetching auth data
     const fetchData = async () => {
-        const res = await fetch('https://note-portfolio-server.herokuapp.com/cred')
+        const res = await fetch('https://note-news-app-server.herokuapp.com/cred')
         const authData = await res.json()
 
         return authData
