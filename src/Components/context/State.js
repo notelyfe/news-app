@@ -28,7 +28,7 @@ const State = (props) => {
         const res = await fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=2bf87a9e81ac4266846fee136e618261')
         const newsData = await res.json()
 
-        return newsData.articles
+        return newsData.articles;
     }
 
     useEffect(() =>{
