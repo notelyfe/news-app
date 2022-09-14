@@ -1,3 +1,14 @@
-body, .auth-bg{
-    background-image: linear-gradient(rgba(183, 243, 203, 0.955), rgb(195, 130, 195)); 
+body,
+.auth-bg {
+    background-image: linear-gradient(rgba(183, 243, 203, 0.955), rgb(195, 130, 195));
+}
+
+.hide-show {
+    position: relative;
+    top: -32px;
+    left: 286px;
+    width: 18px;
+    height: 20px;
+    color: grey;
+    cursor: pointer;
 }

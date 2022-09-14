@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react'
 import './auth.css'
 import Context from './context/Context'
 import News from './News'
+import { AiFillEye } from "react-icons/ai";
+import { AiFillEyeInvisible } from "react-icons/ai";
 
 const Auth = () => {
 
@@ -38,6 +40,16 @@ const Auth = () => {
     const [newsItem, setNewsItem] = useState(false)
     const [alert, setAlert] = useState(false)
 
+    const showPass = (e) => {
+        e.preventDefault()
+        setShow(true)
+    }
+    const hidePass = (e) => {
+        e.preventDefault()
+        setShow(false)
+    }
+    const [show, setShow] = useState(false)
+
     return (
         <div className='auth-bg' style={{ marginTop: "7vh", width: "100%", height: "93vh" }}>
             {(newsItem === false) ? <div className='container rounded py-2'
@@ -64,11 +76,13 @@ const Auth = () => {
                     <div className="mb-3">
                         <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                         <input
-                            type="password"
+                            type={`${show === true ? "text" : "password"}`}
                             className="form-control auth-bg"
                             id="pwd"
                             value={password}
                             onChange={handelpwd} />
+                        {(show === true) ? <AiFillEyeInvisible className='hide-show' onClick={hidePass} /> : <AiFillEye className='hide-show' onClick={showPass} />}
+
                     </div>
 
                     <button
@@ -78,17 +92,17 @@ const Auth = () => {
                     >Log In</button>
                 </form>
             </div> :
-                <div className='row justify-content-center m-auto' style={{ width: "90%"}}>
+                <div className='row justify-content-center m-auto' style={{ width: "90%" }}>
                     <h1 className='text-center py-2'>Top Headlines</h1>
                     {news.map((element) => {
-                        return <div className='my-2 mx-2 container' key={element.url} style={{width: "18rem",}}>
+                        return <div className='my-2 mx-2 container' key={element.url} style={{ width: "18rem", }}>
                             <News
                                 title={element.title}
                                 description={element.description}
                                 imgUrl={element.urlToImage}
-                                newsurl={element.url} 
+                                newsurl={element.url}
                                 author={element.author}
-                                date={element.publishedAt}/>
+                                date={element.publishedAt} />
                         </div>
                     })}
                 </div>}
