@@ -39,8 +39,14 @@ const State = (props) => {
         getNews()
     },[])
 
+    //login confirm
+    const login = (status) => {
+        setLogInSuccess(status)
+    }
+    const [logInSuccess, setLogInSuccess] = useState(false)
+
     return (
-        <Context.Provider value={{auth, setAuth, news, setNews}} >
+        <Context.Provider value={{auth, setAuth, news, setNews, login, logInSuccess}} >
             {props.children}
         </Context.Provider>
     )

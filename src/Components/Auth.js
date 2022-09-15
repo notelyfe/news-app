@@ -7,9 +7,8 @@ import { AiFillEyeInvisible } from "react-icons/ai";
 
 const Auth = () => {
 
-
     const context = useContext(Context)
-    const { auth, news } = context
+    const { auth, news, login } = context
 
     const handelId = (e) => {
         e.preventDefault()
@@ -27,7 +26,8 @@ const Auth = () => {
         e.preventDefault()
         auth.map((detail) => {
             if ((detail.userId === id) && (detail.pass === password)) {
-                setNewsItem(true)
+                setLogInSuccess(true)
+                login(true)
             }
             else {
                 setAlert(true)
@@ -37,22 +37,22 @@ const Auth = () => {
             }
         })
     }
-    const [newsItem, setNewsItem] = useState(false)
+    const [logInSuccess, setLogInSuccess] = useState(false)
     const [alert, setAlert] = useState(false)
 
-    const showPass = (e) => {
+    const showPassword = (e) => {
         e.preventDefault()
-        setShow(true)
+        setShowPass(true)
     }
     const hidePass = (e) => {
         e.preventDefault()
-        setShow(false)
+        setShowPass(false)
     }
-    const [show, setShow] = useState(false)
+    const [showPass, setShowPass] = useState(false)
 
     return (
         <div className='auth-bg' style={{ marginTop: "7vh", width: "100%", height: "93vh" }}>
-            {(newsItem === false) ? <div className='container rounded py-2'
+            {(logInSuccess === false) ? <div className='container rounded py-2'
                 style={{
                     position: "relative",
                     top: "15vh",
@@ -76,12 +76,12 @@ const Auth = () => {
                     <div className="mb-3">
                         <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                         <input
-                            type={`${show === true ? "text" : "password"}`}
+                            type={`${showPass === true ? "text" : "password"}`}
                             className="form-control auth-bg"
                             id="pwd"
                             value={password}
                             onChange={handelpwd} />
-                        {(show === true) ? <AiFillEyeInvisible className='hide-show' onClick={hidePass} /> : <AiFillEye className='hide-show' onClick={showPass} />}
+                        {(showPass === true) ? <AiFillEyeInvisible className='hide-show' onClick={hidePass} /> : <AiFillEye className='hide-show' onClick={showPassword} />}
 
                     </div>
 
@@ -105,7 +105,8 @@ const Auth = () => {
                                 date={element.publishedAt} />
                         </div>
                     })}
-                </div>}
+                </div>
+            }
         </div>
     )
 }

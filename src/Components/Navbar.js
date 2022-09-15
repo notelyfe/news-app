@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import Button from './Button'
 
 const Navbar = () => {
     return (
@@ -16,7 +17,7 @@ const Navbar = () => {
                                 <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                             </li>
                         </ul>
-                        <Link className='btn btn-success' to="/auth">LogIn</Link>
+                        <Button />
                     </div>
                 </div>
             </nav>
